@@ -1,53 +1,167 @@
-/** Variable Imports **/
+/* Importing Variables */
 @import './variables.css';
 
-/**
-  CSS Reset
-  Source: https://www.joshwcomeau.com/css/custom-css-reset/
-**/
-/* 1. Use a more-intuitive box-sizing model */
+/* General Reset */
 *, *::before, *::after {
   box-sizing: border-box;
-}
-/* 2. Remove default margin */
-* {
   margin: 0;
+  padding: 0;
 }
+
 body {
-  /* 3. Add accessible line-height */
-  line-height: 1.5;
-  /* 4. Improve text rendering */
-  -webkit-font-smoothing: antialiased;
-}
-/* 5. Improve media defaults */
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-}
-/* 6. Inherit fonts for form controls */
-input, button, textarea, select {
-  font: inherit;
-}
-/* 7. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-}
-/* 8. Improve line wrapping */
-p {
-  text-wrap: pretty;
-}
-h1, h2, h3, h4, h5, h6 {
-  text-wrap: balance;
-}
-/*
-  9. Create a root stacking context
-*/
-#root, #__next {
-  isolation: isolate;
+  font-family: var(--fs-base, Arial, sans-serif);
+  background-color: var(--clr-paleBlue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
 }
 
-/** Your CSS Below **/
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-white);
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 600px;
+  width: 100%;
+}
 
-/** Attribution CSS **/
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+}
+
+/* Left Side */
+.left {
+  background: linear-gradient(var(--gra-lightSlateBlue), var(--gra-lightRoyalBlue));
+  color: var(--clr-white);
+  flex: 1;
+  text-align: center;
+  padding: 40px;
+  border-radius: 20px 20px 0 0;
+}
+
+@media (min-width: 768px) {
+  .left {
+    border-radius: 20px 0 0 20px;
+  }
+}
+
+.score-circle {
+  width: 180px;
+  height: 180px;
+  background-color: rgba(0, 0, 0, 0.2); /* Darker than the left section */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 20px auto;
+}
+
+
+/* Right Side */
+.right {
+  flex: 1;
+  padding: 20px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between; /* Pushes the content to the left and the span to the right */
+  align-items: center; /* Aligns items vertically */
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+}
+
+.reaction { 
+  background-color: rgba(255, 77, 77, 0.08); color: #ff4d4d;
+  margin-top: 25px;
+  margin-bottom: 15px; 
+}
+.memory { 
+  background-color: rgba(255, 215, 0, 0.08); color: #daa520;
+}
+.verbal { 
+  background-color: rgba(50, 205, 50, 0.08); color: #32cd32;;
+  margin-top:15px;
+}
+.visual {
+  background-color: rgba(218, 182, 252, 0.1); color: #5668ce;
+  margin-top:15px;
+}
+
+/* Continue Button */
+.continue {
+  background-color: var(--clr-darkGrayBlue);
+  color: var(--clr-white);
+  text-align: center;
+  padding: 12px 18px;
+  margin-left: 30px; /* Centers the button horizontally */
+  border-radius: 10px;
+  cursor: pointer;
+  width: 75%;
+  font-size: 14px;
+  font-weight: var(--fw-bold);
+}
+
+.continue:hover {
+  background-color: var(--gra-lightRoyalBlue);
+}
+
+.score {
+  font-size: 4rem;
+  font-weight: bold;
+  margin:0;
+}
+.total {
+  font-size: 1rem; /* Smaller text */
+  opacity: 0.5; /* Slight transparency */
+}
+
+
+.box .icon {
+  margin-right: 10px; /* Adds space between the icon and the text */
+}
+
+.box span {
+  margin-left: auto; /* Pushes the span to the far right */
+  text-align: right; /* Ensures the text inside the span is aligned to the right */
+}
+
+.box span .first-number {
+  color: black; /* Solid black for the first number */
+  font-weight: bold;
+}
+
+.box span .second-number {
+  color: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
+  font-weight: normal;
+}
+.description {
+  opacity: 0.7; /* Adjust the opacity as needed (0.0 to 1.0) */
+  font-size: 0.9rem; /* Optional: Adjust font size if needed */
+  line-height: 1.5; /* Optional: Improve readability */
+}
+
+.left h2:first-of-type {
+  opacity: 0.7; /* Makes "Your Result" slightly transparent */
+}
+
+.left h2:not(:first-of-type) {
+  opacity: 1; /* Ensures "Great" remains fully opaque */
+}
+
+.right h2 {
+  opacity: 0.7; /* Adjust the transparency level (0.0 to 1.0) */
+}
